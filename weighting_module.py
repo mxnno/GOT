@@ -1,5 +1,5 @@
 import torch
-from util.ClassifierDataset import ClassifierDataset
+from util.ClassifierDataSet import ClassifierDataSet
 import torch.nn as nn
 from util.influence_function import InF
 import os
@@ -50,9 +50,9 @@ class WeightingModule():
 
                 rep = torch.tensor([])
                 if split == 'ood':
-                    dataset = ClassifierDataset('output/generating/{}/ood_{}.csv'.format(self.args.dataset, self.args.seed))
+                    dataset = ClassifierDataSet('output/generating/{}/ood_{}.csv'.format(self.args.dataset, self.args.seed))
                 else:
-                    dataset = ClassifierDataset(self.args.train.replace('train', split))
+                    dataset = ClassifierDataSet(self.args.train.replace('train', split))
                 loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=self.args.batch_size, shuffle=False, drop_last=False)
                 for x, _ in loader:
                     pooled_output = self.mdl(x)[0]

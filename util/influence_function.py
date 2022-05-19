@@ -5,7 +5,7 @@ import os
 import torch.nn as nn
 import torch.nn.functional as F
 import pandas as pd
-from util.ClassifierDataset import ClassifierDataset
+from util.ClassifierDataSet import ClassifierDataSet
 from torch.utils.data import ConcatDataset
 import numpy as np
 import math
@@ -51,9 +51,9 @@ class InF():
         self.loaders = {}
         for split in self.splits:
             if split == 'ood':
-                dataset = ClassifierDataset('output/generating/{}/ood_{}.csv'.format(self.args.dataset, self.args.seed))
+                dataset = ClassifierDataSet('output/generating/{}/ood_{}.csv'.format(self.args.dataset, self.args.seed))
             else:
-                dataset = ClassifierDataset(self.args.train.replace('train', split))
+                dataset = ClassifierDataSet(self.args.train.replace('train', split))
             loader = torch.utils.data.DataLoader(dataset=dataset, batch_size=1, shuffle=False, drop_last=False)
             self.loaders[split] = loader
         merge_dataset = ConcatDataset([self.loaders['train'].dataset, self.loaders['ood'].dataset])
