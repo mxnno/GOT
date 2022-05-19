@@ -6,4 +6,4 @@ label_num: 150
 epoch: 10
 vocab_size: 50257
 label_embedding: 100
-gpt_path: 'pretrained/gpt2-base'
+gpt_path: 'pretrained/gpt2'

@@ -12,5 +12,5 @@ relevance_name: 'relevance_candidates'
 all_ood_name: 'all_ood'
 ood_name: 'ood'
 
-gpt_path: 'pretrained/gpt2-base'
+gpt_path: 'pretrained/gpt2'
 bert_path: 'pretrained/bert-base-uncased'
